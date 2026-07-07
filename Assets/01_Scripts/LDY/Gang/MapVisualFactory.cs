@@ -20,11 +20,14 @@ public static class MapVisualFactory
     }
 
     // 노드/갱단 위치를 나타내는 작은 구체 마커를 만든다.
-    public static GameObject CreateMarker(string name, Transform parent, Vector3 worldPosition, float scale, Color color)
+    // keepCollider가 true면 콜라이더를 남겨둔다 (갱단 마커를 마우스로 클릭해서 훔치는 용도).
+    public static GameObject CreateMarker(string name, Transform parent, Vector3 worldPosition, float scale, Color color, bool keepCollider = false)
     {
         GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         go.name = name;
-        Object.Destroy(go.GetComponent<Collider>()); // 추적 로직은 노드 그래프로만 처리하므로 물리 충돌체는 불필요
+
+        if (!keepCollider)
+            Object.Destroy(go.GetComponent<Collider>()); // 맵 노드는 추적 로직을 노드 그래프로만 처리하므로 물리 충돌체가 불필요
 
         go.transform.SetParent(parent, false);
         go.transform.position = worldPosition;

@@ -16,6 +16,6 @@ MonoBehaviour:
   type: 1
   riskLevel: 0
   maxFunds: 100
-  currentFunds: 0
+  currentFunds: 100
   currentNodeId: gB
   damageResistance: 0

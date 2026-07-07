@@ -23,7 +23,7 @@ public class GangController : MonoBehaviour
         if (GraphMapSetup.Instance != null && GraphMapSetup.Instance.Nodes.TryGetValue(gangData.currentNodeId, out MapNode node))
             transform.position = node.position;
 
-        MapVisualFactory.CreateMarker($"GangVisual_{gangData.gangName}", transform, transform.position, 0.7f, GetGangColor(gangData.type));
+        MapVisualFactory.CreateMarker($"GangVisual_{gangData.gangName}", transform, transform.position, 0.7f, GetGangColor(gangData.type), keepCollider: true);
     }
 
     private static Color GetGangColor(GangType type)
